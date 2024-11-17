@@ -45,5 +45,60 @@ void main() {
       expect(CtTextFieldValidator.email('', obligatoryFlag: true), CtStrings.obligatoryErrorText);
       expect(CtTextFieldValidator.email('    ', obligatoryFlag: true), CtStrings.obligatoryErrorText);
     });
+    test('Password', () {
+      // Test empty password with obligatory flag
+      var result1 = CtTextFieldValidator.password('', obligatoryFlag: true);
+      expect(result1.min8CharactersAndNoSpaces, false);
+      expect(result1.uppercaseAndLowercase, false);
+      expect(result1.atLeast1Digit, false);
+
+      // Test empty password without obligatory flag
+      var result2 = CtTextFieldValidator.password('');
+      expect(result2.min8CharactersAndNoSpaces, false);
+      expect(result2.uppercaseAndLowercase, false);
+      expect(result2.atLeast1Digit, false);
+
+      // Test password with spaces
+      var result3 = CtTextFieldValidator.password('Pass word1');
+      expect(result3.min8CharactersAndNoSpaces, false);
+      expect(result3.uppercaseAndLowercase, true);
+      expect(result3.atLeast1Digit, true);
+
+      // Test password shorter than 8 characters
+      var result4 = CtTextFieldValidator.password('Pass1');
+      expect(result4.min8CharactersAndNoSpaces, false);
+      expect(result4.uppercaseAndLowercase, true);
+      expect(result4.atLeast1Digit, true);
+
+      // Test password without uppercase
+      var result5 = CtTextFieldValidator.password('password123');
+      expect(result5.min8CharactersAndNoSpaces, true);
+      expect(result5.uppercaseAndLowercase, false);
+      expect(result5.atLeast1Digit, true);
+
+      // Test password without lowercase
+      var result6 = CtTextFieldValidator.password('PASSWORD123');
+      expect(result6.min8CharactersAndNoSpaces, true);
+      expect(result6.uppercaseAndLowercase, false);
+      expect(result6.atLeast1Digit, true);
+
+      // Test password without digits
+      var result7 = CtTextFieldValidator.password('PasswordTest');
+      expect(result7.min8CharactersAndNoSpaces, true);
+      expect(result7.uppercaseAndLowercase, true);
+      expect(result7.atLeast1Digit, false);
+
+      // Test valid password meeting all criteria
+      var result8 = CtTextFieldValidator.password('Password123');
+      expect(result8.min8CharactersAndNoSpaces, true);
+      expect(result8.uppercaseAndLowercase, true);
+      expect(result8.atLeast1Digit, true);
+
+      // Test password with leading/trailing spaces
+      var result9 = CtTextFieldValidator.password(' Password123 ');
+      expect(result9.min8CharactersAndNoSpaces, true);
+      expect(result9.uppercaseAndLowercase, true);
+      expect(result9.atLeast1Digit, true);
+    });
   });
 }

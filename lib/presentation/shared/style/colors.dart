@@ -22,4 +22,6 @@ abstract class CtColors {
   // background gradient
   static const Color skyBlue1 = Color(0xFFF4F9FF);
   static const Color skyBlue2 = Color(0xFFE0EDFB);
+
+  static const Color transparent = Colors.transparent;
 }

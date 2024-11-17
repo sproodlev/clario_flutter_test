@@ -34,4 +34,15 @@ extension CtTextFieldColors on CtTextFieldState {
         return CtColors.darkBlue;
     }
   }
+
+  Color toHintColor() {
+    switch (this) {
+      case CtTextFieldState.success:
+        return CtColors.green;
+      case CtTextFieldState.error:
+        return CtColors.red;
+      default:
+        return CtColors.darkBlue70;
+    }
+  }
 }

@@ -11,6 +11,13 @@ abstract class CtTextStyles {
     color: CtColors.darkBlue,
   );
 
+  static TextStyle s16w400 = TextStyle(
+    fontFamily: 'Inter',
+    fontSize: 16.sp,
+    height: 1.0,
+    fontWeight: FontWeight.w400,
+  );
+
   static TextStyle s16w400darkBlue = TextStyle(
     fontFamily: 'Inter',
     fontSize: 16.sp,
@@ -27,7 +34,7 @@ abstract class CtTextStyles {
     color: CtColors.darkBlue70,
   );
 
-  static TextStyle s16w400darkGreen = TextStyle(
+  static TextStyle s16w400green = TextStyle(
     fontFamily: 'Inter',
     fontSize: 16.sp,
     height: 1.0,
@@ -35,7 +42,7 @@ abstract class CtTextStyles {
     color: CtColors.green,
   );
 
-  static TextStyle s16w400darkRed = TextStyle(
+  static TextStyle s16w400red = TextStyle(
     fontFamily: 'Inter',
     fontSize: 16.sp,
     height: 1.0,
@@ -43,12 +50,19 @@ abstract class CtTextStyles {
     color: CtColors.red,
   );
 
-  static TextStyle s13w400darkBlue70 = TextStyle(
+  static TextStyle s13w400 = TextStyle(
     fontFamily: 'Inter',
     fontSize: 13.sp,
     height: 1.38,
     fontWeight: FontWeight.w400,
-    color: CtColors.darkBlue70,
+  );
+
+  static TextStyle s13w400darkBlue = TextStyle(
+    fontFamily: 'Inter',
+    fontSize: 13.sp,
+    height: 1.38,
+    fontWeight: FontWeight.w400,
+    color: CtColors.darkBlue,
   );
 
   static TextStyle s13w400green = TextStyle(
