@@ -1,5 +1,7 @@
 # Clario Flutter Test
 
+![p2-mobile](assets/images/showcase.gif)
+
 ## Documentation
 
 Please refer to this README.md, comments in the code.
