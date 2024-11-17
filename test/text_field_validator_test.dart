@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fluttertest/presentation/shared/components/inputs/text_fields/text_field_validator.dart';
-import 'package:fluttertest/utils/intl/strings.dart';
+import 'package:fluttertest/util/intl/strings.dart';
 
 void main() {
   group('TextFieldValidator.', () {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertest/presentation/auth_page/auth_view.dart';
+import 'package:fluttertest/presentation/auth/auth_page.dart';
 
 // Ct stands for Clario Test and will be used as a prefix for some classes in this project
 class CtApp extends StatelessWidget {
@@ -15,7 +15,7 @@ class CtApp extends StatelessWidget {
           home: child,
         );
       },
-      child: AuthView(),
+      child: AuthPage(),
     );
   }
 }

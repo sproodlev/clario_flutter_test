@@ -3,12 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertest/presentation/shared/style/colors.dart';
-import 'package:fluttertest/presentation/shared/style/text_styles.dart';
 
 class CtButton extends StatelessWidget {
   final double width;
   final void Function() onPressed;
-  final String text;
+  final Widget text;
 
   const CtButton({
     required this.width,
@@ -34,10 +33,7 @@ class CtButton extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Text(
-            text,
-            style: CtTextStyles.s16w700white,
-          ),
+          child: text,
         ),
       ),
     );

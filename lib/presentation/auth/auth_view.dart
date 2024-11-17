@@ -1,19 +1,23 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertest/presentation/auth_page/components/auth_background.dart';
-import 'package:fluttertest/presentation/auth_page/components/password_field_suffix.dart';
-import 'package:fluttertest/presentation/auth_page/components/password_strength.dart';
-import 'package:fluttertest/presentation/auth_page/components/password_strength_meter.dart';
-import 'package:fluttertest/presentation/auth_page/components/password_strength_param_state.dart';
+import 'package:fluttertest/presentation/auth/auth_cubit/auth_cubit.dart';
+import 'package:fluttertest/presentation/auth/components/auth_background.dart';
+import 'package:fluttertest/presentation/auth/components/password_field_suffix.dart';
+import 'package:fluttertest/presentation/auth/components/password_strength.dart';
+import 'package:fluttertest/presentation/auth/components/password_strength_meter.dart';
+import 'package:fluttertest/presentation/auth/components/password_strength_param_state.dart';
 import 'package:fluttertest/presentation/shared/components/buttons/button.dart';
+import 'package:fluttertest/presentation/shared/components/dialog.dart';
 import 'package:fluttertest/presentation/shared/components/inputs/text_fields/text_field.dart';
 import 'package:fluttertest/presentation/shared/components/inputs/text_fields/text_field_state.dart';
 import 'package:fluttertest/presentation/shared/components/inputs/text_fields/text_field_validator.dart';
+import 'package:fluttertest/presentation/shared/style/colors.dart';
 import 'package:fluttertest/presentation/shared/style/text_styles.dart';
-import 'package:fluttertest/utils/extensions/bool/to_password_strg_param_st_ext.dart';
-import 'package:fluttertest/utils/intl/strings.dart';
+import 'package:fluttertest/util/extensions/bool/to_password_strg_param_st_ext.dart';
+import 'package:fluttertest/util/intl/strings.dart';
 
 class AuthView extends StatefulWidget {
   const AuthView({super.key});
@@ -141,7 +145,7 @@ class _AuthViewState extends State<AuthView> {
                         ? min(max(0, 812.h - MediaQuery.of(context).viewInsets.bottom - 439.h), 138.h)
                         : 138.h,
                   ),
-                  Text(CtStrings.title, style: CtTextStyles.s28w700darkBlue),
+                  Text(CtStrings.authTitle, style: CtTextStyles.s28w700darkBlue),
                   SizedBox(height: 40.h),
                   SizedBox(
                     height: 88.h,
@@ -195,18 +199,37 @@ class _AuthViewState extends State<AuthView> {
                   ),
                   SizedBox(height: 40.h),
                   BlocListener<AuthCubit, AuthState>(
-                    listener: (context, state) {},
+                    listener: (context, state) {
+                      state.when(
+                        initial: () {},
+                        loading: () {},
+                        success: () {
+                          CtDialog.showPlatformSuccessDialog(context);
+                        },
+                        failed: () {},
+                      );
+                    },
                     child: CtButton(
                       width: 240.w,
-                      text: CtStrings.authButton,
+                      text: BlocBuilder<AuthCubit, AuthState>(
+                        builder: (context, state) {
+                          return state.when(
+                            initial: () => Text(CtStrings.authButton, style: CtTextStyles.s16w700white),
+                            loading: () => CircularProgressIndicator(color: CtColors.white, strokeWidth: 2.r),
+                            success: () => Text(CtStrings.authButton, style: CtTextStyles.s16w700white),
+                            failed: () => Text(CtStrings.authButton, style: CtTextStyles.s16w700white),
+                          );
+                        },
+                      ),
                       onPressed: () {
                         FocusManager.instance.primaryFocus?.unfocus();
                         bool valid = validateFields(
                           email: emailController.text,
                           password: passwordController.text,
                         );
-                        if (valid)
+                        if (valid) {
                           context.read<AuthCubit>().authenticate(emailController.text, passwordController.text);
+                        }
                       },
                     ),
                   ),

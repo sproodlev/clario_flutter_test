@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertest/presentation/auth_page/components/password_strength_param_state.dart';
+import 'package:fluttertest/presentation/auth/components/password_strength_param_state.dart';
 import 'package:fluttertest/presentation/shared/style/text_styles.dart';
-import 'package:fluttertest/utils/intl/strings.dart';
+import 'package:fluttertest/util/intl/strings.dart';
 
 class PasswordStrengthMeter extends StatelessWidget {
   final PasswordStrengthParamState min8CharactersAndNoSpaces;

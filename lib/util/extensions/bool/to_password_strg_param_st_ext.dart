@@ -1,4 +1,4 @@
-import 'package:fluttertest/presentation/auth_page/components/password_strength_param_state.dart';
+import 'package:fluttertest/presentation/auth/components/password_strength_param_state.dart';
 
 extension ToPasswordStrgParamStExt on bool {
   PasswordStrengthParamState toPasswordStrengthParamState() {

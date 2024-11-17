@@ -1,6 +1,6 @@
-import 'package:fluttertest/presentation/auth_page/components/password_strength.dart';
-import 'package:fluttertest/utils/extensions/string/email_validator_ext.dart';
-import 'package:fluttertest/utils/intl/strings.dart';
+import 'package:fluttertest/presentation/auth/components/password_strength.dart';
+import 'package:fluttertest/util/extensions/string/email_validator_ext.dart';
+import 'package:fluttertest/util/intl/strings.dart';
 
 abstract class CtTextFieldValidator {
   /// Returns errorText or null if valid
